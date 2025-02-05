@@ -50,8 +50,8 @@ setup(name = 'qPython3dm',
       long_description=read('README.rst'),
 
       author = 'finos',
-      author_email = 'data-tech-kdb@finos.org',
-      url = 'https://github.com/finos/qPython',
+      author_email = '',
+      url = 'https://github.com/seizetheday/qPython',
       license = 'Apache License Version 2.0',
 
       ext_modules = ext_modules,
