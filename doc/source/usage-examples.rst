@@ -397,7 +397,7 @@ This example depicts how to subscribe to standard kdb+ tickerplant service:
             print('Press <ENTER> to close application')
     
             # subscribe to tick
-            response = q.sendSync('.u.sub', numpy.string_('trade'), numpy.string_(''))
+            response = q.sendSync('.u.sub', numpy.bytes_('trade'), numpy.bytes_(''))
             # get table model 
             if isinstance(response[1], QTable):
                 print('%s table data model: %s' % (response[0], response[1].dtype))
@@ -449,7 +449,7 @@ This example shows how to stream data to the kdb+ process using standard tickerp
                     # publish data to tick
                     # function: .u.upd
                     # table: ask
-                    self.q.sendSync('.u.upd', numpy.string_('ask'), self.get_ask_data())
+                    self.q.sendSync('.u.upd', numpy.bytes_('ask'), self.get_ask_data())
     
                     time.sleep(1)
                 except QException as e:
@@ -520,7 +520,7 @@ Please refer to :ref:`custom_type_mapping` on implementation aspects:
     
         @parse(QSYMBOL)
         def _read_symbol(self, qtype = QSYMBOL):
-            return numpy.string_(self._buffer.get_symbol()).decode(self._encoding)
+            return numpy.bytes_(self._buffer.get_symbol()).decode(self._encoding)
     
     
     
@@ -538,7 +538,7 @@ Please refer to :ref:`custom_type_mapping` on implementation aspects:
     
         @parse(QSYMBOL)
         def _read_symbol(self, qtype = QSYMBOL):
-            return numpy.string_(self._buffer.get_symbol()).decode(self._encoding)[::-1]
+            return numpy.bytes_(self._buffer.get_symbol()).decode(self._encoding)[::-1]
     
     
     

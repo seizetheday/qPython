@@ -94,15 +94,15 @@ String and symbols
 In order to distinguish symbols and strings on the Python side, following rules 
 apply:
 
-- q symbols are represented as ``numpy.string_`` type,
+- q symbols are represented as ``numpy.bytes_`` type,
 - q strings are mapped to plain Python strings in Python 2 and ``bytes`` in Python 3.
 
 ::
 
     # Python 2
     # `quickbrownfoxjumpsoveralazydog
-    <type 'numpy.string_'>
-    numpy.string_('quickbrownfoxjumpsoveralazydog')
+    <type 'numpy.bytes_'>
+    numpy.bytes_('quickbrownfoxjumpsoveralazydog')
     
     # "quick brown fox jumps over a lazy dog"
     <type 'str'>
@@ -155,7 +155,7 @@ Generic lists are represented as a plain Python lists.
 ::
 
     # (1;`bcd;"0bc";5.5e)
-    [numpy.int64(1), numpy.string_('bcd'), '0bc', numpy.float32(5.5)]
+    [numpy.int64(1), numpy.bytes_('bcd'), '0bc', numpy.float32(5.5)]
 
 
 While serializing Python data to q following heuristic is applied:
@@ -182,8 +182,8 @@ While serializing Python data to q following heuristic is applied:
   determined by type of the first element in the array,
 - Python lists and tuples are represented as q generic lists::
 
-    [numpy.int64(42), None, numpy.string_('foo')]
-    (numpy.int64(42), None, numpy.string_('foo'))
+    [numpy.int64(42), None, numpy.bytes_('foo')]
+    (numpy.int64(42), None, numpy.bytes_('foo'))
     # (42;::;`foo)
     
 .. note:: `numpy` arrays with ``dtype==|S1`` are represented as atom character.
@@ -275,7 +275,7 @@ Examples::
     
        
     QDictionary([numpy.int64(1), numpy.int16(2), numpy.float64(3.234), '4'], 
-                [numpy.string_('one'), qlist(numpy.array([2, 3]), qtype=QLONG_LIST), '456', [numpy.int64(7), qlist(numpy.array([8, 9]), qtype=QLONG_LIST)]])
+                [numpy.bytes_('one'), qlist(numpy.array([2, 3]), qtype=QLONG_LIST), '456', [numpy.int64(7), qlist(numpy.array([8, 9]), qtype=QLONG_LIST)]])
     # q: (1;2h;3.234;"4")!(`one;2 3;"456";(7;8 9))
 
 
@@ -373,7 +373,7 @@ Please note that q ``null`` values are defined as::
     _QNAN32 = numpy.frombuffer('\x00\x00\xc0\x7f', dtype=numpy.float32)[0]
     _QNAN64 = numpy.frombuffer('\x00\x00\x00\x00\x00\x00\xf8\x7f', dtype=numpy.float64)[0]
     _QNULL_BOOL = numpy.bool_(False)
-    _QNULL_SYM = numpy.string_('')
+    _QNULL_SYM = numpy.bytes_('')
     _QNULL_GUID = uuid.UUID('00000000-0000-0000-0000-000000000000')
 
 
