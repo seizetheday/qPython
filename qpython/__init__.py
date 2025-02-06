@@ -17,7 +17,7 @@
 __all__ = ['qconnection', 'qtype', 'qtemporal', 'qcollection']
 
 
-__version__ = '@@VERSION_PLACEHOLDER@@'
+__version__ = '0.1.0'
 
 
 

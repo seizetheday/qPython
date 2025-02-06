@@ -46,7 +46,7 @@ class ListenerThread(threading.Thread):
                 if message.type != MessageType.ASYNC:
                     print('Unexpected message, expected message of type: ASYNC')
                     
-                print('type: %s, message type: %s, data size: %s, is_compressed: %s ' % (type(message), message.type, message.size, message.is_compressed))
+                print('type: %s, message type: %s, data size: %s, is_compressed: %s ' % (type(message), message.type, message.size, message.compression_mode))
                 print(message.data)
                 
                 if isinstance(message.data, QDictionary):
@@ -60,7 +60,7 @@ class ListenerThread(threading.Thread):
 
 if __name__ == '__main__':
     # create connection object
-    q = qconnection.QConnection(host = 'localhost', port = 5000)
+    q = qconnection.QConnection(host = 'localhost', port = 5001)
     # initialize connection
     q.open()
 
