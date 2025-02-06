@@ -44,12 +44,12 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-setup(name = 'qPython3dm',
+setup(name = 'qPython4',
       version = __version__,
       description = 'kdb+ interfacing library for Python',
       long_description=read('README.rst'),
 
-      author = 'finos',
+      author = 'James Liu',
       author_email = '',
       url = 'https://github.com/seizetheday/qPython',
       license = 'Apache License Version 2.0',
